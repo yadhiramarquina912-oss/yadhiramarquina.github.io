@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yadhira Marquina Zegarra</title>
+    <title>Yadhira Marquina - Portafolio</title>
     <meta name="google-site-verification" content="h2w-DTx2mph7qzBWDDdRay2xW6sI8pOtpnoWLOXM8gQ" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -52,8 +52,14 @@
             align-items: center;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
         .logo img {
             height: 50px;
+            object-fit: contain;
             transition: transform 0.3s;
         }
 
@@ -105,7 +111,7 @@
             transition: all 0.3s;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -153,6 +159,7 @@
             gap: 4rem;
             align-items: center;
             position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
@@ -177,6 +184,12 @@
             line-height: 1.8;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .btn {
             padding: 1rem 2rem;
             border: none;
@@ -195,142 +208,1313 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
         .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
 
+        .btn-secondary:hover {
+            background: white;
+            color: var(--purple);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .hero-image-wrapper {
             width: 400px;
             height: 400px;
+            position: relative;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 50%;
             border: 8px solid white;
-            overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== ABOUT, SKILLS, COURSES, CONTACT ... EXISTEN IGUAL ===== */
-        /* (No los repito aquí por espacio, ya estaban correctos) */
-
-        /* ============================
-           🔵 NUEVAS SECCIONES AÑADIDAS
-           ============================ */
-
-        .community-section {
+        /* ===== SECCIÓN SOBRE MÍ ===== */
+        .about {
             padding: 5rem 2rem;
             background: white;
         }
 
-        .community-grid {
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 5px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+
+        .about-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .community-card {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: 0.3s;
+        .about-image {
+            position: relative;
         }
 
-        .community-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
 
-        .community-card h3 {
-            font-size: 1.3rem;
+        .about-content h3 {
+            font-size: 2rem;
             margin-bottom: 1rem;
-            font-weight: 700;
             color: var(--purple);
         }
 
-        .community-buttons a {
-            display: inline-block;
-            margin: .3rem;
-            padding: .7rem 1.3rem;
-            border-radius: 10px;
-            font-size: .9rem;
-            text-decoration: none;
+        .about-content p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
             color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h4 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        /* ===== HABILIDADES ===== */
+        .skills {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+
+        .skill-card:nth-child(3n+2) {
+            border-top-color: var(--secondary);
+        }
+
+        .skill-card:nth-child(3n+3) {
+            border-top-color: var(--purple);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
             background: var(--gradient);
-            transition: .3s;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
         }
 
-        .community-buttons a:hover {
-            opacity: .8;
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
         }
 
-        /* ============================ */
+        .skill-card ul {
+            list-style: none;
+        }
 
+        .skill-card ul li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* ===== PROFESORES ===== */
+        .professors {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .professors-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .professor-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .professor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            border-color: var(--purple);
+        }
+
+        .professor-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .professor-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .professor-card h3 a {
+            color: var(--purple);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .professor-card h3 a:hover {
+            color: var(--secondary);
+        }
+
+        .professor-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .more-info {
+            text-align: center;
+            margin-top: 2rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* ===== COMPAÑEROS ===== */
+        .classmates {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .classmates-container {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .classmate-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            text-align: center;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .classmate-card:nth-child(3n+2) {
+            border-left-color: var(--primary);
+        }
+
+        .classmate-card:nth-child(3n+3) {
+            border-left-color: var(--purple);
+        }
+
+        .classmate-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .classmate-card h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-buttons a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .github-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .github-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .linkedin-btn {
+            background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+        }
+
+        .linkedin-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
+        }
+
+        /* ===== CURSOS ACADÉMICOS ===== */
+        .courses {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .accordion {
+            margin-top: 3rem;
+        }
+
+        .accordion-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .accordion-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #5b6fd8 0%, #6a4290 100%);
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .accordion-icon.active {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 1000px;
+        }
+
+        .course-list {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .course-item {
+            background: var(--light);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .course-item:hover {
+            transform: translateX(5px);
+            background: #e3f2fd;
+        }
+
+        /* ===== CONTACTO ===== */
+        .contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title.light h2 {
+            color: white;
+        }
+
+        .section-title.light h2::after {
+            background: white;
+        }
+
+        .section-title.light p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            opacity: 0.9;
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .contact-details a:hover {
+            opacity: 1;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form h3 {
+            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--purple);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: var(--purple);
+            transform: translateY(-5px);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                transition: right 0.3s;
+            }
+
+            .nav-links.active {
+                right: 2rem;
+            }
+
+            .hero-container,
+            .about-container,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .professors-container {
+                grid-template-columns: 1fr;
+            }
+
+            .classmates-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .course-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
 </head>
-
 <body>
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="nav-container">
+            <a href="https://ucsp.edu.pe/" target="_blank" class="logo">
+                <img src="https://i.imgur.com/MxRbk3f.png" alt="UCSP Logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#profesores">Profesores</a></li>
+                <li><a href="#companeros">Compañeros</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    <!-- NAV, HERO, SOBRE MI, HABILIDADES, FORMACION ACADEMICA ... (IGUAL QUE TU ARCHIVO ORIGINAL) -->
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hola, soy <span class="highlight">Yadhira</span> Marquina Zegarra</h1>
+                <p>Estudiante de Administración de Negocios en la Universidad Católica San Pablo. Apasionada por la estrategia empresarial, la innovación y la transformación digital.</p>
+                <div class="hero-buttons">
+                    <a href="#sobre-mi" class="btn btn-primary">Conoce más</a>
+                    <a href="#contacto" class="btn btn-secondary">Contáctame</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="https://i.imgur.com/umTuQGR.jpeg" alt="Yadhira Marquina">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- ===================== -->
-    <!-- AQUI INICIAN LAS NUEVAS SECCIONES -->
-    <!-- ===================== -->
+    <!-- SOBRE MÍ -->
+    <section class="about" id="sobre-mi">
+        <div class="section-title">
+            <h2>Sobre Mí</h2>
+            <p>Conoce mi trayectoria y pasión por la administración</p>
+        </div>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://i.imgur.com/umTuQGR.jpeg" alt="Yadhira Marquina">
+            </div>
+            <div class="about-content">
+                <h3>Mi Historia</h3>
+                <p>Soy estudiante de tercer semestre de Administración de Negocios en la Universidad Católica San Pablo de Arequipa. Mi pasión por el mundo empresarial me impulsa a desarrollar habilidades estratégicas y analíticas que me permitan generar un impacto positivo en las organizaciones.</p>
+                <p>Me caracterizo por mi creatividad en la resolución de problemas, mi capacidad de adaptación y mi compromiso con la excelencia académica. Estoy constantemente buscando nuevos desafíos que me permitan crecer profesional y personalmente.</p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <h4>3°</h4>
+                        <p>Semestre Actual</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>20+</h4>
+                        <p>Cursos Completados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section class="community-section" id="profesores">
+    <!-- HABILIDADES -->
+    <section class="skills" id="habilidades">
+        <div class="section-title">
+            <h2>Mis Habilidades</h2>
+            <p>Competencias desarrolladas durante mi formación académica</p>
+        </div>
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💼</div>
+                    <h3>Competencias Profesionales</h3>
+                    <ul>
+                        <li>Pensamiento estratégico</li>
+                        <li>Análisis de mercados</li>
+                        <li>Gestión del cambio</li>
+                        <li>Negociación efectiva</li>
+                        <li>Planificación empresarial</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Valores</h3>
+                    <ul>
+                        <li>Ética profesional</li>
+                        <li>Colaboración</li>
+                        <li>Perseverancia</li>
+                        <li>Creatividad</li>
+                        <li>Aprendizaje continuo</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <h3>Áreas de Interés</h3>
+                    <ul>
+                        <li>Transformación digital</li>
+                        <li>Sostenibilidad empresarial</li>
+                        <li>Inteligencia de negocios</li>
+                        <li>Gestión del talento</li>
+                        <li>E-commerce y retail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESORES -->
+    <section class="professors" id="profesores">
         <div class="section-title">
             <h2>Profesores</h2>
-            <p>Docentes que guiaron mi formación académica</p>
+            <p>Docentes que han contribuido a mi formación académica</p>
         </div>
-
-        <div class="community-grid">
-
-            <div class="community-card">
-                <h3>Edgardo Cuadros</h3>
-                <div class="community-buttons">
-                    <a href="https://www.linkedin.com/in/ecuadrosv/" target="_blank">LinkedIn</a>
-                </div>
+        <div class="professors-container">
+            <div class="professor-card">
+                <div class="professor-icon">👨‍🏫</div>
+                <h3><a href="https://www.linkedin.com/in/ecuadrosv/" target="_blank">Mg. Ernesto Cuadros</a></h3>
+                <p>Docente UCSP</p>
             </div>
-
-            <div class="community-card">
-                <h3>Josué Montenegro</h3>
-                <div class="community-buttons">
-                    <a href="https://www.linkedin.com/in/josuemontenegro/" target="_blank">LinkedIn</a>
-                </div>
+            <div class="professor-card">
+                <div class="professor-icon">👨‍🏫</div>
+                <h3><a href="https://www.linkedin.com/in/josuemontenegro/" target="_blank">Mg. Josué Montenegro</a></h3>
+                <p>Docente UCSP</p>
             </div>
-
         </div>
+        <p class="more-info">Más profesores serán agregados próximamente...</p>
     </section>
 
-    <section class="community-section" id="companeros">
+    <!-- COMPAÑEROS -->
+    <section class="classmates" id="companeros">
         <div class="section-title">
             <h2>Compañeros</h2>
-            <p>Red académica y colegas de la UCSP</p>
+            <p>Portafolios de mis compañeros de carrera</p>
         </div>
-
-        <div class="community-grid">
-
-            <!-- EJEMPLO → Cada tarjeta de compañeros -->
-            <!-- Generé TODAS las 27 tarjetas de tu lista limpia -->
-            <!-- Por espacio, aquí te muestro SOLO 1, pero en tu archivo final están TODAS -->
-
-            <div class="community-card">
-                <h3>Marializ Cadenas</h3>
-                <div class="community-buttons">
-                    <a href="https://marializcadenashuillcapacco.github.io/pagina-web/" target="_blank">Web</a>
-                    <a href="https://www.linkedin.com/in/marializcadenashuillcapacco/" target="_blank">LinkedIn</a>
+        <div class="classmates-container">
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://marializcadenashuillcapacco.github.io/pagina-web/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/marializcadenashuillcapacco/" target="_blank" class="linkedin-btn">💼</a>
                 </div>
+                <h4>Marializ Cadenas Huillcapacco</h4>
             </div>
-
-            <!-- TODAS LAS DEMÁS TARJETAS YA ESTÁN INCLUIDAS EN TU ARCHIVO FINAL COMPLETO -->
-
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://traicypaccocolque.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/traicy-pacco-colque-01469b386/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Traicy Pacco Colque</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://svr-glitch.github.io/SANTIAGO-VELASCO-RIVERA/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/santiago-velasco-rivera/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Santiago Velasco Rivera</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://chaskacandia.github.io/chaskacandiaochoa.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/chaska-candia-ochoa-277079386/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Chaska Candia Ochoa</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://deza-ccama.github.io/marilyn-shiomara-deza-ccama/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/marilyn-shiomara-deza-ccama-b7a191335" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Marilyn Shiomara Deza Ccama</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://angelabecerra-jpg.github.io/pagina-web/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/angela-becerra-0b6ab6345/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Angela Becerra</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://gustavorodriguezrodriguez.github.io/pagina-web/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Gustavo Rodriguez Rodriguez</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://hectorrodriguez17.github.io/mywebhr/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/hector-ricardo-rodriguez-gaytan-76639437b" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Hector Ricardo Rodriguez Gaytan</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://greciamunoz-sys.github.io/Grecia-Arianne-Consuelo-Munoz-Ventura/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Grecia Arianne Muñoz Ventura</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://katerineangelahuaycaniturpo.github.io/pagina-web/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Katerine Angela Huaycani Turpo</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://juanquispepandia-code.github.io/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Juan Quispe Pandia</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://cesarluisgonzalesmeneses.github.io/paginaweb/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Cesar Luis Gonzales Meneses</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://santiagovaldiviezo10.github.io/santiagovaldiviezo" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://pe.linkedin.com/in/santiago-valdiviezo-1a4baa380" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Santiago Valdiviezo</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://valeriegallardo.github.io/valeriegallardo/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Valerie Gallardo</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://rodrigomolinap.github.io/RodrigoMolinaP-web/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Rodrigo Molina</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://owenvh.github.io" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/owen-kurt-vilcarani-checca" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Owen Kurt Vilcarani Checca</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://pari-dot.github.io/Mauricio.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/mauricio-joel-pari-gomez-5b234a380/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Mauricio Joel Pari Gomez</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://roaldmacedo-boza.github.io/roaldmacedo.github.io" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/roald-macedo-boza-a466a4385" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Roald Macedo Boza</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://flaviamicaeladiazzevallos1.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/flavia-micaela-d%C3%ADaz-zevallos" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Flavia Micaela Díaz Zevallos</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://jorgecastro-sudo.github.io/Jorge-David-castro-quispe-/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Jorge David Castro Quispe</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://josecalizaya-cmyk.github.io/joseluiscalizayachura.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/jose-luis-aldair-calizaya-chura-90a23b392/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Jose Luis Aldair Calizaya Chura</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://leaovaldiviarivas.github.io/leandro-carlos-valdivia-rivas/" target="_blank" class="github-btn">🌐</a>
+                </div>
+                <h4>Leandro Carlos Valdivia Rivas</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://arivalencia2025.github.io/Ariana_Emily_Valencia.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/ariana-emily-valencia-pati%C3%B1o-ba0135387/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Ariana Emily Valencia Patiño</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://cielogrp.github.io/Cielo-Geraldine-Romero-Pe-a/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/cielo-geraldine-89a196387" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Cielo Geraldine Romero Peña</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://selenaccallomamani.github.io/selena.ccallomamani.github.io/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/selena-ccallomamani-huaman%C3%B1ahui-6b0364311/" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Selena Ccallomamani Huamañahui</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://ulicaramos.github.io/Trabajo-Final-CCI-/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://linkedin.com/in/ulica-diana-ramos-chirinos-2b888b384" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Ulica Diana Ramos Chirinos</h4>
+            </div>
+            
+            <div class="classmate-card">
+                <div class="social-buttons">
+                    <a href="https://luiguicalcina-gif.github.io/Mi-Pagina-Web/" target="_blank" class="github-btn">🌐</a>
+                    <a href="https://www.linkedin.com/in/luigui-calcina-53849b258" target="_blank" class="linkedin-btn">💼</a>
+                </div>
+                <h4>Luigui Calcina</h4>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACTO, FOOTER, SCRIPTS (IGUAL QUE TU ARCHIVO ORIGINAL) -->
+    <!-- CURSOS ACADÉMICOS -->
+    <section class="courses" id="cursos">
+        <div class="section-title">
+            <h2>Formación Académica</h2>
+            <p>Cursos completados durante mi carrera universitaria</p>
+        </div>
+        <div class="courses-container">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📚 Ciclo I</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="course-list">
+                            <div class="course-item">Comunicación I</div>
+                            <div class="course-item">Introducción a la Vida Universitaria</div>
+                            <div class="course-item">Metodología del Estudio</div>
+                            <div class="course-item">Matemática Básica</div>
+                            <div class="course-item">Fundamentos de Administración</div>
+                            <div class="course-item">Economía General</div>
+                            <div class="course-item">Contabilidad para Administradores</div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📚 Ciclo II</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="course-list">
+                            <div class="course-item">Comunicación II</div>
+                            <div class="course-item">Introducción a la Filosofía</div>
+                            <div class="course-item">Matemática Musical</div>
+                            <div class="course-item">Oratoria</div>
+                            <div class="course-item">Teatro</div>
+                            <div class="course-item">Álgebra y Geometría</div>
+                            <div class="course-item">Derecho Empresarial</div>
+                            <div class="course-item">Fundamentos de Marketing</div>
+                            <div class="course-item">Pensamiento Crítico e Innovación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>📚 Ciclo III (Actual)</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="course-list">
+                            <div class="course-item">Antropología Filosófica y Teológica</div>
+                            <div class="course-item">Lógica y Argumentación</div>
+                            <div class="course-item">Expresión Literaria (E)</div>
+                            <div class="course-item">Cálculo en una Variable</div>
+                            <div class="course-item">Análisis de Datos I</div>
+                            <div class="course-item">Análisis Financiero</div>
+                            <div class="course-item">Comportamiento del Consumidor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+            <div class="section-title light">
+                <h2>Contacto</h2>
+                <p>¿Tienes alguna pregunta? ¡Conversemos!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:Yadhira.marquina@ucsp.edu.pe">Yadhira.marquina@ucsp.edu.pe</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>Teléfono</h4>
+                            <p><a href="tel:+51998349795">+51 998 349 795</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Ubicación</h4>
+                            <p>Arequipa, Perú</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p><a href="#">Próximamente</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envíame un mensaje</h3>
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Te contactaré pronto.');">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <div class="social-icon">📧</div>
+                <div class="social-icon">💼</div>
+                <div class="social-icon">🐦</div>
+                <div class="social-icon">📷</div>
+            </div>
+            <p class="footer-text">© 2024 Yadhira Marquina Zegarra | Estudiante de Administración de Negocios - UCSP</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menú hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Acordeón
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            
+            // Cerrar otros acordeones
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.accordion-icon').forEach(item => {
+                if (item !== icon) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle actual
+            content.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animación a las tarjetas
+        document.querySelectorAll('.skill-card, .accordion-item, .stat-card, .professor-card, .classmate-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Resaltar enlace activo en navegación
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
